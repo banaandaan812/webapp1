@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoute Snack – Cafetaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <!-- NAVIGATIE -->
+  <header>
+    <div class="logo">🧂 Zoute Snack</div>
+    <nav>
+      <a href="#menu" class="nav-link">menu</a>
+      <a href="#winkelwagen" class="nav-link">winkelwagen</a>
+      <a href="#contact" class="nav-link">contact</a>
+    </nav>
+    <div class="cart-icon" onclick="scrollToSection('winkelwagen')">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </header>
+ 
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Vers. Snel. Lekker.</h1>
+      <p>De beste cafetaria snacks van de buurt — iedere dag vers bereid.</p>
+      <a href="#menu" class="btn-primary">Bekijk het menu</a>
+    </div>
+    <div class="hero-decoration">🍟</div>
+  </section>
+ 
+  <!-- MENU -->
+  <section id="menu" class="section">
+    <h2 class="section-title">Ons Menu</h2>
+    <p class="section-sub">Klik op een product om het toe te voegen aan je winkelwagen</p>
+ 
+    <div class="category-label">🍔 Hoofdgerechten</div>
+    <div class="menu-grid">
+      <div class="menu-card" onclick="addToCart('Cheese Burger', 7)">
+        <div class="menu-img">🍔</div>
+        <div class="menu-info">
+          <h3>Cheese Burger</h3>
+          <p>Sappige burger met kaas, sla en tomatensaus</p>
+          <span class="price">€7,00</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+      <div class="menu-card" onclick="addToCart('Frikandel Speciaal', 4)">
+        <div class="menu-img">🌭</div>
+        <div class="menu-info">
+          <h3>Frikandel Speciaal</h3>
+          <p>Met mayo, curry en uitjes</p>
+          <span class="price">€4,00</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+      <div class="menu-card" onclick="addToCart('Kapsalon', 7)">
+        <div class="menu-img">🥙</div>
+        <div class="menu-info">
+          <h3>Kapsalon</h3>
+          <p>Friet, doner, kaas, sla en sauzen</p>
+          <span class="price">€7,00</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+      <div class="menu-card" onclick="addToCart('Broodje Kroket', 6)">
+        <div class="menu-img">🥖</div>
+        <div class="menu-info">
+          <h3>Broodje Kroket</h3>
+          <p>Krokante kroket op zacht broodje</p>
+          <span class="price">€6,00</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+      <div class="menu-card" onclick="addToCart('Pikanto', 4.50)">
+        <div class="menu-img">🌶️</div>
+        <div class="menu-info">
+          <h3>Pikanto</h3>
+          <p>Pittige snack voor de liefhebbers</p>
+          <span class="price">€4,50</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+    </div>
+ 
+    <div class="category-label">🍟 Bijgerechten</div>
+    <div class="menu-grid">
+      <div class="menu-card" onclick="addToCart('Grote Friet', 3.50)">
+        <div class="menu-img">🍟</div>
+        <div class="menu-info">
+          <h3>Grote Friet</h3>
+          <p>Vers gesneden, knapperig gebakken</p>
+          <span class="price">€3,50</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+      <div class="menu-card" onclick="addToCart('Kleine Friet', 2.50)">
+        <div class="menu-img">🍟</div>
+        <div class="menu-info">
+          <h3>Kleine Friet</h3>
+          <p>Perfect als tussendoortje</p>
+          <span class="price">€2,50</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+    </div>
+ 
+    <div class="category-label">🥤 Dranken & Desserts</div>
+    <div class="menu-grid">
+      <div class="menu-card" onclick="addToCart('Milkshake', 4)">
+        <div class="menu-img">🥤</div>
+        <div class="menu-info">
+          <h3>Milkshake</h3>
+          <p>Aardbei, chocolade of vanille</p>
+          <span class="price">€4,00</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+      <div class="menu-card" onclick="addToCart('Cola', 3)">
+        <div class="menu-img">🧃</div>
+        <div class="menu-info">
+          <h3>Cola</h3>
+          <p>Koud en verfrissend</p>
+          <span class="price">€3,00</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+      <div class="menu-card" onclick="addToCart('Ijsje', 2)">
+        <div class="menu-img">🍦</div>
+        <div class="menu-info">
+          <h3>Soft-ijsje</h3>
+          <p>Vanille of chocolade swirl</p>
+          <span class="price">€2,00</span>
+        </div>
+        <button class="add-btn">+</button>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- WINKELWAGEN -->
+  <section id="winkelwagen" class="section dark-section">
+    <h2 class="section-title light">🛒 Winkelwagen</h2>
+    <div class="cart-container">
+      <div id="cart-items" class="cart-items">
+        <p class="cart-empty">Je winkelwagen is leeg. Voeg iets toe via het menu!</p>
+      </div>
+      <div class="cart-summary">
+        <div class="summary-box">
+          <h3>Overzicht</h3>
+          <div class="summary-row">
+            <span>Subtotaal</span>
+            <span id="subtotal">€0,00</span>
+          </div>
+          <div class="summary-row">
+            <span>Bezorgkosten</span>
+            <span>€0,00</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Totaal</span>
+            <span id="total">€0,00</span>
+          </div>
+          <button class="btn-primary full-width" onclick="bestellen()">Bestellen</button>
+          <button class="btn-secondary full-width" onclick="clearCart()">Leegmaken</button>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- OVER ONS -->
+  <section class="about-section">
+    <div class="about-text">
+      <h2>Over Zoute Snack</h2>
+      <p>Al meer dan 20 jaar serveren wij de lekkerste snacks in de buurt. Van klassieke frikandel speciaal tot onze beroemde kapsalon — bij ons is iedereen welkom.</p>
+      <ul class="perks">
+        <li>✅ Dagvers bereid</li>
+        <li>✅ Geen wachttijd bij voorbestellen</li>
+        <li>✅ Altijd de beste kwaliteit</li>
+        <li>✅ Ruim parkeren voor de deur</li>
+      </ul>
+    </div>
+    <div class="about-visual">
+      <div class="big-emoji">🍟</div>
+    </div>
+  </section>
+ 
+  <!-- OPENINGSTIJDEN -->
+  <section class="hours-section">
+    <h2 class="section-title">Openingstijden</h2>
+    <div class="hours-grid">
+      <div class="hours-card">
+        <span class="day">Maandag – Vrijdag</span>
+        <span class="time">11:00 – 21:00</span>
+      </div>
+      <div class="hours-card">
+        <span class="day">Zaterdag</span>
+        <span class="time">11:00 – 22:00</span>
+      </div>
+      <div class="hours-card">
+        <span class="day">Zondag</span>
+        <span class="time">12:00 – 20:00</span>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- CONTACT -->
+  <section id="contact" class="section dark-section">
+    <h2 class="section-title light">📞 Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Bereikbaarheid</h3>
+        <div class="contact-item">
+          <span class="contact-icon">📱</span>
+          <div>
+            <strong>Telefoon</strong>
+            <p>055 - 123 45 67</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">✉️</span>
+          <div>
+            <strong>E-mail</strong>
+            <p>info@zoutesnack.nl</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <strong>Adres</strong>
+            <p>Snackstraat 4, Nijmegen</p>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="contact-form-box">
+        <h3>Laat een review achter</h3>
+        <div class="star-rating" id="star-rating">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+        <input type="text" id="contact-naam" placeholder="Jouw naam" class="form-input" />
+        <input type="email" id="contact-email" placeholder="E-mailadres" class="form-input" />
+        <textarea id="contact-bericht" placeholder="Schrijf hier je review..." class="form-textarea" rows="4"></textarea>
+        <button class="btn-primary full-width" onclick="verzendReview()">Verzend</button>
+      </div>
+    </div>
+ 
+    <!-- Reviews display -->
+    <div class="reviews-section">
+      <h3 class="section-title light">Wat klanten zeggen</h3>
+      <div class="reviews-grid" id="reviews-container">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"De kapsalon hier is absoluut de beste van de stad. Altijd vers!"</p>
+          <strong>– Lars V.</strong>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★☆</div>
+          <p>"Snelle bediening en heerlijke friet. Zeker terugkomen!"</p>
+          <strong>– Marieke D.</strong>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Beste frikandel van Nijmegen, geen discussie mogelijk."</p>
+          <strong>– Sander K.</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">🧂 Zoute Snack</div>
+      <p>© 2026 Zoute Snack – Alle rechten voorbehouden</p>
+      <div class="footer-links">
+        <a href="#menu">Menu</a>
+        <a href="#winkelwagen">Winkelwagen</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+ 
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast"></div>
+ 
+  <!-- BESTELLING MODAL -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h2>🎉 Bestelling Geplaatst!</h2>
+      <p>Bedankt voor je bestelling bij Zoute Snack. We gaan direct voor je aan de slag!</p>
+      <p class="modal-time">Geschatte wachttijd: <strong>15–20 minuten</strong></p>
+      <button class="btn-primary" onclick="closeModal()">Sluiten</button>
+    </div>
+  </div>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
