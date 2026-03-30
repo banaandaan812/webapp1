@@ -17,10 +17,26 @@
       <a href="#winkelwagen" class="nav-link">winkelwagen</a>
       <a href="#contact" class="nav-link">contact</a>
     </nav>
-    <div class="cart-icon" onclick="scrollToSection('winkelwagen')">
-      🛒 <span id="cart-count">0</span>
+    <div class="header-right">
+      <button class="btn-primary" onclick="openLogin()">🔐 Inloggen</button>
+      <div class="cart-icon" onclick="scrollToSection('winkelwagen')">
+        🛒 <span id="cart-count">0</span>
+      </div>
     </div>
   </header>
+ 
+  <!-- LOGIN MODAL -->
+  <div id="login-overlay" class="modal-overlay hidden">
+    <div class="modal login-modal">
+      <button class="modal-close" onclick="closeLogin()">✕</button>
+      <h2>🔐 Inloggen</h2>
+      <p class="login-sub">Beheerders kunnen hier inloggen</p>
+      <input type="text" id="login-user" placeholder="Gebruikersnaam" class="form-input" />
+      <input type="password" id="login-pass" placeholder="Wachtwoord" class="form-input" />
+      <p id="login-error" class="login-error hidden">Onjuiste inloggegevens. Probeer opnieuw.</p>
+      <button class="btn-primary full-width" onclick="doLogin()">Inloggen</button>
+    </div>
+  </div>
  
   <!-- HERO -->
   <section class="hero">
@@ -222,7 +238,7 @@
           <span class="contact-icon">✉️</span>
           <div>
             <strong>E-mail</strong>
-            <p>info@zoutesnack.nl</p>
+            <p><a href="mailto:info@zoutesnack.nl">info@zoutesnack.nl</a></p>
           </div>
         </div>
         <div class="contact-item">
@@ -295,10 +311,4 @@
       <h2>🎉 Bestelling Geplaatst!</h2>
       <p>Bedankt voor je bestelling bij Zoute Snack. We gaan direct voor je aan de slag!</p>
       <p class="modal-time">Geschatte wachttijd: <strong>15–20 minuten</strong></p>
-      <button class="btn-primary" onclick="closeModal()">Sluiten</button>
-    </div>
-  </div>
- 
-  <script src="script.js"></script>
-</body>
-</html>
+      <button class="btn-p

@@ -320,7 +320,7 @@ nav {
 }
  
 .add-btn {
-  position: absolute;
+  position: relative;
   right: 16px;
   top: 16px;
   background: var(--gold);
@@ -818,4 +818,12 @@ footer p {
   .hero-content h1 { font-size: 2.8rem; }
   .menu-grid { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
