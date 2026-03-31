@@ -1,6 +1,6 @@
 <?php 
-
-include 'read.php';
+include ('dbcalls/conn.php');''
+include ('dbcalls/read.php');
 
 ?>
 

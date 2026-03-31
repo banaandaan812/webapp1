@@ -2,7 +2,7 @@
 $servername = "db";
 $username = "user";
 $password = "password";
-$dbname = "oefendatabase";
+$dbname = "restaurantwebapp1";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
