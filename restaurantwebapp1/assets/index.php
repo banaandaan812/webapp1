@@ -1,3 +1,9 @@
+<?php 
+
+include 'read.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -54,6 +60,20 @@
     <p class="section-sub">Klik op een product om het toe te voegen aan je winkelwagen</p>
  
     <div class="category-label">🍔 Hoofdgerechten</div>
+
+<?php var_dump($result); ?> 
+
+<?php foreach ($result as $menuitem) { 
+  
+  echo $menuitem['naam'];
+  
+  
+  ?>
+
+
+
+
+
     <div class="menu-grid">
       <div class="menu-card" onclick="addToCart('Cheese Burger', 7)">
         <div class="menu-img">🍔</div>
@@ -64,6 +84,15 @@
         </div>
         <button class="add-btn">+</button>
       </div>
+
+
+
+<?php } ?>
+
+
+
+
+
       <div class="menu-card" onclick="addToCart('Frikandel Speciaal', 4)">
         <div class="menu-img">🌭</div>
         <div class="menu-info">
