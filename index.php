@@ -1,6 +1,6 @@
 <?php 
-include "../dbcalls/conn.php";
-include "../dbcalls/read.php";
+include('dbcalls/conn.php');
+include('dbcalls/read.php');
 
 ?>
 
@@ -24,7 +24,8 @@ include "../dbcalls/read.php";
       <a href="#contact" class="nav-link">contact</a>
     </nav>
     <div class="header-right">
-      <button class="btn-primary" onclick="openLogin()">🔐 Inloggen</button>
+      
+      <a href="login.php" class="btn-primary">🔐 Inloggen</a>
       <div class="cart-icon" onclick="scrollToSection('winkelwagen')">
         🛒 <span id="cart-count">0</span>
       </div>
@@ -60,131 +61,30 @@ include "../dbcalls/read.php";
     <p class="section-sub">Klik op een product om het toe te voegen aan je winkelwagen</p>
  
     <div class="category-label">🍔 Hoofdgerechten</div>
+</section>
+<section>
 
-<?php var_dump($result); ?> 
+
 
 <?php foreach ($result as $menuitem) { 
-  
-  echo $menuitem['naam'];
-  
-  
   ?>
-
-
-
-
-
     <div class="menu-grid">
       <div class="menu-card" onclick="addToCart('Cheese Burger', 7)">
         <div class="menu-img">🍔</div>
         <div class="menu-info">
-          <h3>Cheese Burger</h3>
-          <p>Sappige burger met kaas, sla en tomatensaus</p>
-          <span class="price">€7,00</span>
+          <h3><?php echo $menuitem['naam']; ?></h3>
+          <p><?php echo $menuitem['omschrijving']; ?></p>
+          <span class="price">€<?php echo number_format($menuitem['bedrag'], 2); ?></span>
         </div>
         <button class="add-btn">+</button>
       </div>
 
-
+</section>
 
 <?php } ?>
 
+<!-- 
 
-
-
-
-      <div class="menu-card" onclick="addToCart('Frikandel Speciaal', 4)">
-        <div class="menu-img">🌭</div>
-        <div class="menu-info">
-          <h3>Frikandel Speciaal</h3>
-          <p>Met mayo, curry en uitjes</p>
-          <span class="price">€4,00</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-      <div class="menu-card" onclick="addToCart('Kapsalon', 7)">
-        <div class="menu-img">🥙</div>
-        <div class="menu-info">
-          <h3>Kapsalon</h3>
-          <p>Friet, doner, kaas, sla en sauzen</p>
-          <span class="price">€7,00</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-      <div class="menu-card" onclick="addToCart('Broodje Kroket', 6)">
-        <div class="menu-img">🥖</div>
-        <div class="menu-info">
-          <h3>Broodje Kroket</h3>
-          <p>Krokante kroket op zacht broodje</p>
-          <span class="price">€6,00</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-      <div class="menu-card" onclick="addToCart('Pikanto', 4.50)">
-        <div class="menu-img">🌶️</div>
-        <div class="menu-info">
-          <h3>Pikanto</h3>
-          <p>Pittige snack voor de liefhebbers</p>
-          <span class="price">€4,50</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-    </div>
- 
-    <div class="category-label">🍟 Bijgerechten</div>
-    <div class="menu-grid">
-      <div class="menu-card" onclick="addToCart('Grote Friet', 3.50)">
-        <div class="menu-img">🍟</div>
-        <div class="menu-info">
-          <h3>Grote Friet</h3>
-          <p>Vers gesneden, knapperig gebakken</p>
-          <span class="price">€3,50</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-      <div class="menu-card" onclick="addToCart('Kleine Friet', 2.50)">
-        <div class="menu-img">🍟</div>
-        <div class="menu-info">
-          <h3>Kleine Friet</h3>
-          <p>Perfect als tussendoortje</p>
-          <span class="price">€2,50</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-    </div>
- 
-    <div class="category-label">🥤 Dranken & Desserts</div>
-    <div class="menu-grid">
-      <div class="menu-card" onclick="addToCart('Milkshake', 4)">
-        <div class="menu-img">🥤</div>
-        <div class="menu-info">
-          <h3>Milkshake</h3>
-          <p>Aardbei, chocolade of vanille</p>
-          <span class="price">€4,00</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-      <div class="menu-card" onclick="addToCart('Cola', 3)">
-        <div class="menu-img">🧃</div>
-        <div class="menu-info">
-          <h3>Cola</h3>
-          <p>Koud en verfrissend</p>
-          <span class="price">€3,00</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-      <div class="menu-card" onclick="addToCart('Ijsje', 2)">
-        <div class="menu-img">🍦</div>
-        <div class="menu-info">
-          <h3>Soft-ijsje</h3>
-          <p>Vanille of chocolade swirl</p>
-          <span class="price">€2,00</span>
-        </div>
-        <button class="add-btn">+</button>
-      </div>
-    </div>
-  </section>
- 
   <!-- WINKELWAGEN -->
   <section id="winkelwagen" class="section dark-section">
     <h2 class="section-title light">🛒 Winkelwagen</h2>
@@ -212,7 +112,7 @@ include "../dbcalls/read.php";
         </div>
       </div>
     </div>
-  </section>
+  </section> 
  
   <!-- OVER ONS -->
   <section class="about-section">

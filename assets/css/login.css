@@ -1,0 +1,146 @@
+/* login.css */
+ 
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 30% 40%, #1f1200 0%, var(--black) 65%);
+  padding: 40px 20px;
+}
+ 
+.login-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+ 
+.login-card {
+  background: var(--card-bg);
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 48px 40px 40px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(245,166,35,0.1);
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.5s ease both;
+}
+ 
+.login-logo {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 4px 12px rgba(245,166,35,0.4));
+}
+ 
+.login-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+ 
+.login-sub {
+  color: var(--gray);
+  font-size: 0.88rem;
+  text-align: center;
+  margin-bottom: 36px;
+}
+ 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+ 
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #bbb;
+  letter-spacing: 0.5px;
+}
+ 
+.password-wrap {
+  position: relative;
+}
+ 
+.password-wrap .form-input {
+  padding-right: 48px;
+  margin-bottom: 0;
+}
+ 
+.toggle-pw {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+ 
+.toggle-pw:hover { opacity: 1; }
+ 
+.login-error {
+  color: var(--red);
+  font-size: 0.88rem;
+  margin-bottom: 4px;
+}
+ 
+.login-btn {
+  margin-top: 8px;
+  font-size: 1.05rem;
+  padding: 15px;
+}
+ 
+.terug-link {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+ 
+.terug-link:hover { color: var(--gold); }
+ 
+/* Floating deco emojis */
+.login-deco {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+ 
+.login-deco span {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.06;
+  animation: floatDeco linear infinite;
+}
+ 
+.login-deco span:nth-child(1) { left: 5%;  animation-duration: 14s; animation-delay: 0s;   top: 80%; }
+.login-deco span:nth-child(2) { left: 20%; animation-duration: 18s; animation-delay: 3s;   top: 90%; }
+.login-deco span:nth-child(3) { left: 50%; animation-duration: 12s; animation-delay: 1s;   top: 85%; }
+.login-deco span:nth-child(4) { left: 70%; animation-duration: 16s; animation-delay: 5s;   top: 95%; }
+.login-deco span:nth-child(5) { left: 85%; animation-duration: 20s; animation-delay: 2s;   top: 88%; }
+.login-deco span:nth-child(6) { left: 35%; animation-duration: 15s; animation-delay: 7s;   top: 92%; }
+ 
+@keyframes floatDeco {
+  from { transform: translateY(0) rotate(0deg); opacity: 0.06; }
+  to   { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}

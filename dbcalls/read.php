@@ -1,7 +1,7 @@
 <?php
 
 //variabel met een SQL query
-$sql = "SELECT * FROM menuitems";
+$sql = "SELECT * FROM `menu-items`"     ;
 
 //preparestatement
 $stmt = $conn->prepare($sql);
