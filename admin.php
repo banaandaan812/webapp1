@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zoute Snack – Admin</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/admin.css" />
 </head>
 <body>
  
@@ -16,7 +16,9 @@
     <nav>
       <a href="#bestellingen" class="nav-link">bestellingen</a>
       <a href="#menu-beheer" class="nav-link">menu beheer</a>
-      <a href="#overzicht" class="nav-link">overzicht</a>
+      <a href="#crud-create" class="nav-link">create</a>
+      <a href="#crud-update" class="nav-link">update</a>
+      <a href="#crud-delete" class="nav-link">delete</a>
     </nav>
     <button class="btn-primary" onclick="uitloggen()">🚪 Uitloggen</button>
   </header>
@@ -62,26 +64,113 @@
     <div class="orders-list" id="orders-list"></div>
   </section>
  
-  <!-- MENU BEHEER -->
-  <section id="menu-beheer" class="admin-section">
-    <h2 class="section-title">🍔 Menu Beheer</h2>
-    <p class="section-sub">Voeg producten toe, pas prijzen aan of verwijder items.</p>
-    <div class="menu-beheer-grid">
-      <div class="admin-form-card">
-        <h3>Nieuw product toevoegen</h3>
-        <input type="text" id="nieuw-naam" placeholder="Productnaam" class="form-input" />
-        <input type="text" id="nieuw-emoji" placeholder="Emoji (bijv. 🍔)" class="form-input" />
-        <input type="text" id="nieuw-beschrijving" placeholder="Beschrijving" class="form-input" />
-        <input type="number" id="nieuw-prijs" placeholder="Prijs (bijv. 4.50)" class="form-input" step="0.01" min="0" />
-        <select id="nieuw-categorie" class="form-input">
+ 
+  <!-- CREATE -->
+  <section id="crud-create" class="admin-section crud-section">
+    <div class="crud-header create-header">
+      <span class="crud-icon">➕</span>
+      <div>
+        <h2 class="section-title">Create</h2>
+        <p class="section-sub">Voeg een nieuw product toe aan het menu</p>
+      </div>
+    </div>
+    <div class="crud-form-grid">
+      <div class="crud-field">
+        <label>Productnaam</label>
+        <input type="text" id="c-naam" class="form-input" placeholder="bijv. Cheese Burger" />
+      </div>
+      <div class="crud-field">
+        <label>Emoji</label>
+        <input type="text" id="c-emoji" class="form-input" placeholder="bijv. 🍔" />
+      </div>
+      <div class="crud-field">
+        <label>Beschrijving</label>
+        <input type="text" id="c-beschrijving" class="form-input" placeholder="Korte omschrijving" />
+      </div>
+      <div class="crud-field">
+        <label>Prijs (€)</label>
+        <input type="number" id="c-prijs" class="form-input" placeholder="bijv. 4.50" step="0.01" min="0" />
+      </div>
+      <div class="crud-field">
+        <label>Categorie</label>
+        <select id="c-categorie" class="form-input">
           <option value="Hoofdgerechten">🍔 Hoofdgerechten</option>
           <option value="Bijgerechten">🍟 Bijgerechten</option>
           <option value="Dranken & Desserts">🥤 Dranken & Desserts</option>
         </select>
-        <button class="btn-primary full-width" onclick="voegProductToe()">+ Toevoegen</button>
       </div>
-      <div class="product-lijst" id="product-lijst"></div>
     </div>
+    <button class="btn-primary crud-btn" onclick="crudCreate()">➕ Product aanmaken</button>
+    <div id="create-result" class="crud-result hidden"></div>
+  </section>
+ 
+  <!-- UPDATE -->
+  <section id="crud-update" class="admin-section dark-section crud-section">
+    <div class="crud-header update-header">
+      <span class="crud-icon">✏️</span>
+      <div>
+        <h2 class="section-title light">Update</h2>
+        <p class="section-sub">Wijzig een bestaand product</p>
+      </div>
+    </div>
+    <div class="crud-form-grid">
+      <div class="crud-field">
+        <label>Selecteer product</label>
+        <select id="u-select" class="form-input" onchange="laadProductInForm()">
+          <option value="">— Kies een product —</option>
+        </select>
+      </div>
+      <div class="crud-field">
+        <label>Nieuwe naam</label>
+        <input type="text" id="u-naam" class="form-input" placeholder="Productnaam" />
+      </div>
+      <div class="crud-field">
+        <label>Nieuwe beschrijving</label>
+        <input type="text" id="u-beschrijving" class="form-input" placeholder="Beschrijving" />
+      </div>
+      <div class="crud-field">
+        <label>Nieuwe prijs (€)</label>
+        <input type="number" id="u-prijs" class="form-input" placeholder="bijv. 5.00" step="0.01" min="0" />
+      </div>
+      <div class="crud-field">
+        <label>Nieuwe categorie</label>
+        <select id="u-categorie" class="form-input">
+          <option value="Hoofdgerechten">🍔 Hoofdgerechten</option>
+          <option value="Bijgerechten">🍟 Bijgerechten</option>
+          <option value="Dranken & Desserts">🥤 Dranken & Desserts</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-primary crud-btn" onclick="crudUpdate()">✏️ Product bijwerken</button>
+    <div id="update-result" class="crud-result hidden"></div>
+  </section>
+ 
+  <!-- DELETE -->
+  <section id="crud-delete" class="admin-section crud-section">
+    <div class="crud-header delete-header">
+      <span class="crud-icon">🗑️</span>
+      <div>
+        <h2 class="section-title">Delete</h2>
+        <p class="section-sub">Verwijder een product uit het menu</p>
+      </div>
+    </div>
+    <div class="delete-select-wrap">
+      <div class="crud-field">
+        <label>Selecteer product om te verwijderen</label>
+        <select id="d-select" class="form-input" onchange="toonDeletePreview()">
+          <option value="">— Kies een product —</option>
+        </select>
+      </div>
+      <div id="delete-preview" class="delete-preview hidden">
+        <span id="delete-preview-emoji"></span>
+        <div>
+          <strong id="delete-preview-naam"></strong>
+          <span id="delete-preview-prijs"></span>
+        </div>
+      </div>
+    </div>
+    <button class="btn-primary crud-btn delete-btn" onclick="crudDelete()">🗑️ Product verwijderen</button>
+    <div id="delete-result" class="crud-result hidden"></div>
   </section>
  
   <!-- FOOTER -->
